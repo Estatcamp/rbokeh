@@ -366,7 +366,7 @@ sub_names <- function(
     )
 
     ret$data[1:2] <- d2_and_names$d2
-    ret$info[c("x_name", "y_name")] <- d2_and_names$xy_name
+    ret$info[c("x_name", "y_name")] <- d2_and_names$xy_names
   }
 
   return(ret)

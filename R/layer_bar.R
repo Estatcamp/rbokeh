@@ -140,7 +140,7 @@ ly_bar <- function(
 
   ind <- which(names(res) == "color")
   if (length(ind) > 0) {
-    names(res)[ind] <- colorname
+    names(res)[ind] <- "color" # colorname
   }
 
   bad_param_names <- c("color", "origin", "breaks", "right", "binwidth", "position")
