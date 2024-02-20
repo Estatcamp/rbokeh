@@ -33,52 +33,54 @@ rbokeh2html <- function(fig, file = tempfile(fileext = ".html"), pretty = FALSE,
 
   sc <- ifelse(secure, "s", "")
 
-  a <- paste0("<!DOCTYPE html>
-<html>
-<head>
-<script src='http", sc, "://cdn.pydata.org/bokeh/release/bokeh-", ver, ".min.js'></script>
-<link href='http", sc, "://cdn.pydata.org/bokeh/release/bokeh-", ver, ".min.css' rel='stylesheet'>
-</head>
-<body>
-<div class='bk-root' class='plotdiv' style=' width: ",
-  width, "px; height: ", height, "px;'>
-<div id='", elementid, "' class='plotdiv'></div>
-<div>
-<script type='text/javascript'>
-Bokeh.$(function() {
-  var modelid = '", modelid, "';
-  var elementid = '", elementid, "';
-  var docid = '", docid, "';
-  var docs_json = ", fig, ";
-  var refkey = Object.keys(docs_json)[0]
-  var refs = docs_json[refkey].roots.references
-  function traverseObject(obj) {
-    for (var key in obj) {
-      if (obj[key].constructor === Object) {
-        traverseObject(obj[key]);
-      } else if (obj[key].constructor === Array) {
-        for (var i = 0; i < obj[key].length; i++) {
-          if (obj[key][i] === null)
-            obj[key][i] = NaN;
-        };
-      }
-    };
-  }
-  for (var i = 0; i < refs.length; i++) {
-    if (refs[i].type === 'ColumnDataSource')
-      traverseObject(refs[i].attributes.data);
-  };
-  var render_items = [{
-    'docid': docid,
-    'elementid': elementid,
-    'modelid': modelid
-  }];
-  Bokeh.set_log_level('info');
-  Bokeh.embed.embed_items(docs_json, render_items);
-});
-</script>
-</body>
-</html>")
+  a <- paste0(
+        "<!DOCTYPE html>
+        <html>
+        <head>
+        <script src='http", sc, "://cdn.pydata.org/bokeh/release/bokeh-", ver, ".min.js'></script>
+        <link href='http", sc, "://cdn.pydata.org/bokeh/release/bokeh-", ver, ".min.css' rel='stylesheet'>
+        </head>
+        <body>
+        <div class='bk-root' class='plotdiv' style=' width: ",
+        width, "px; height: ", height, "px;'>
+        <div id='", elementid, "' class='plotdiv'></div>
+        <div>
+        <script type='text/javascript'>
+            // Bokeh.$(function() {
+            var modelid = '", modelid, "';
+            var elementid = '", elementid, "';
+            var docid = '", docid, "';
+            var docs_json = ", fig, ";
+            var refkey = Object.keys(docs_json)[0]
+            var refs = docs_json[refkey].roots.references
+            function traverseObject(obj) {
+                for (var key in obj) {
+                if (obj[key].constructor === Object) {
+                    traverseObject(obj[key]);
+                } else if (obj[key].constructor === Array) {
+                    for (var i = 0; i < obj[key].length; i++) {
+                    if (obj[key][i] === null)
+                        obj[key][i] = NaN;
+                    };
+                }
+                };
+            }
+            for (var i = 0; i < refs.length; i++) {
+                if (refs[i].type === 'ColumnDataSource')
+                traverseObject(refs[i].attributes.data);
+            };
+            var render_items = [{
+                'docid': docid,
+                'elementid': elementid,
+                'modelid': modelid
+            }];
+            Bokeh.set_log_level('info');
+            Bokeh.embed.embed_items(docs_json, render_items);
+        // });
+        </script>
+        </body>
+        </html>"
+    )
 
   cat(a, file = file)
   message("html file written to: ", file)

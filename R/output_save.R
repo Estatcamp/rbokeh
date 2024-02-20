@@ -32,16 +32,19 @@ widget2png <- function(p, file, timeout = 500) {
         suppressMessages(htmlwidgets::saveWidget(p, file = ff))
       }
 
-      js <- paste0("var page = require('webpage').create();
-page.open('file://", ff, "', function() {
-  // $('html').style.zoom = 2;
-  window.setTimeout(function () {
-    page.render('", file, "');
-    phantom.exit();
-  }, ", timeout, ");
-});")
-      cat(js, file = ffjs)
-      system2(phantom, ffjs, stdout = TRUE, stderr = TRUE)
+        js <- paste0(
+            "var page = require('webpage').create();
+            page.open('file://", ff, "', function() {
+            // $('html').style.zoom = 2;
+            window.setTimeout(function () {
+                page.render('", file, "');
+                phantom.exit();
+            }, ", timeout, ");
+            });"
+        )
+        
+        cat(js, file = ffjs)
+        system2(phantom, ffjs, stdout = TRUE, stderr = TRUE)
     })
     if (inherits(res, "try-error"))
       message("** could not create static plot...")
