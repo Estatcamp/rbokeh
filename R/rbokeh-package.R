@@ -11,13 +11,11 @@ NULL
 #' For full documentation on the package, visit \url{https://hafen.github.io/rbokeh}
 #' @name rbokeh-package
 #' @aliases rbokeh
-#' @docType package
 NULL
 
 #' "Periodic Table" dataset
 #'
 #' @name elements
-#' @docType data
 #' @description
 #' Data for periodic table of the elements
 #' @usage elements
@@ -28,7 +26,6 @@ NULL
 #' Flight frequency dataset
 #'
 #' @name flightfreq
-#' @docType data
 #' @description
 #' Daily counts of domestic flights in the U.S. from 1999 to mid-2008
 #' @usage flightfreq
@@ -39,7 +36,6 @@ NULL
 #' Hexagon binned counts of NYC taxi pickup locations
 #'
 #' @name nyctaxihex
-#' @docType data
 #' @description
 #' Counts of NYC taxi pickups by location for January 2013, obtained from \href{https://chriswhong.com/open-data/foil_nyc_taxi/}{here}.
 #' @usage nyctaxihex

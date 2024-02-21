@@ -39,6 +39,6 @@ Suggests:
     knitr,
     rmarkdown
 Enhances: shiny (>= 0.12)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.1
 Encoding: UTF-8
 VignetteBuilder: knitr
