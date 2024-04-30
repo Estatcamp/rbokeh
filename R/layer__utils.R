@@ -237,6 +237,10 @@ grab_param_index <- function(data_idx, regular_idx) {
   !(data_idx | regular_idx)
 }
 
+lazy_fix <- function (expr, env){
+    # stopifnot(is.call(expr) || is.name(expr) || is.atomic(expr)) # crash after R update
+    structure(list(expr = expr, env = env), class = "lazy")
+}
 # Grab function
 #
 # This function takes in all arguments and lazy wraps them.  Once wrapped, they are placed into one of three groups: data, info, or params.  params should be able to be sent to \code{check_opts} without issue
@@ -252,11 +256,10 @@ grab <- function(..., dots, null_data = FALSE) {
 
   pf <- parent.frame()
   pf2 <- parent.frame(2)
-
   arg_vals <- pryr::named_dots(...) %>%
     lapply(function(expr) {
       correct_value <- pryr::substitute_q(expr, pf)
-      lazy_(correct_value, pf2)
+      lazy_fix(correct_value, pf2)
     })
 
   # forces a name stomp (but that shouldn't happen)
@@ -348,7 +351,6 @@ sub_names <- function(
     names(res) <- x_names
     res
   }
-
   # parse all values for
   ret <- lapply(arg_obj, parse_values)
 
