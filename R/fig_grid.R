@@ -269,7 +269,8 @@ grid_plot <- function(figs, width = NULL, height = NULL,
   ), recursive = FALSE))
   tbbmod$model$attributes$tools <- alltools
   tbbmod$model$attributes$sizing_mode <- "scale_width"
-  layoutspec$toolbarbox <- tbbmod$model
+  # layoutspec$toolbarbox <- tbbmod$model # `*tmp*`$toolbar : partial match of 'toolbar' to 'toolbarbox'
+  layoutspec$toolbar <- tbbmod$model
 
   # set up root column
   rcid <- gen_id(list(x = list(spec = list(time = Sys.time()))), "root_column")
@@ -376,17 +377,17 @@ grid_plot <- function(figs, width = NULL, height = NULL,
 
   # # set attributes to help set the padding for each individual panel
   # for (ii in seq_along(obj$x$spec$figs)) {
-  #   obj$x$spec$figs[[ii]]$x$spec$model$plot$attributes["toolbar_location"] <- list(NULL)
-  #   obj$x$spec$figs[[ii]]$x$parenttype <- "GridPlot"
+    # obj$x$spec$figs[[ii]]$x$spec$model$plot$attributes["toolbar_location"] <- list(NULL)
+    # obj$x$spec$figs[[ii]]$x$parenttype <- "GridPlot"
   # }
-
+  
   obj
 }
 
 ## add a figure to a BokehGridPlot object/
 ## obj must be a BokehGridPlot and p must be a BokehFigure object
 # add_plot <- function(obj, p, row = NULL, col = NULL, same_y = FALSE, same_x = FALSE) {
-#   ## warn if overwriting a plot
+  # ## warn if overwriting a plot
 
 # }
 
