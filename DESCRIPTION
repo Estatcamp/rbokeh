@@ -18,17 +18,17 @@ LazyData: true
 NeedsCompilation: no
 Imports:
     htmlwidgets (>= 0.5),
-    maps,
+    maps (>= 3.4.2),
     methods,
     jsonlite,
     digest,
-    hexbin,
+    hexbin (>= 1.28.3),
     lazyeval,
-    pryr,
+    pryr (>= 0.1.6),
     magrittr,
-    ggplot2,
+    ggplot2 (>= 3.5.1),
     scales,
-    gistr
+    gistr (>= 0.9.0)
 Suggests:
     testthat,
     data.table,

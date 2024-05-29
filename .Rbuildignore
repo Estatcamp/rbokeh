@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 man-roxygen
 \.git
 ^\.travis\.yml$
