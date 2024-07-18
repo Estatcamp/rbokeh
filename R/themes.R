@@ -51,7 +51,7 @@ bk_default_theme <- function() {
       text_color = "black", fill_alpha = 0.5, line_alpha = 1,
       size = 20, glyph = 1, line_dash = NULL, line_width = 1),
     plot = NULL,
-    axis = list(axis_label_text_font_size = "12pt"),
+    # axis = list(axis_label_text_font_size = "12pt"),
     grid = NULL,
     legend = NULL
   )
