@@ -17,3 +17,5 @@ _gh-pages
 vignettes/index_cache/
 revdep
 .vscode
+.editorconfig
+.env
