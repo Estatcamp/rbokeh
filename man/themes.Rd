@@ -3,13 +3,18 @@
 \name{bk_default_theme}
 \alias{bk_default_theme}
 \alias{bk_ggplot_theme}
+\alias{bk_dark_theme}
 \title{Themes}
 \usage{
 bk_default_theme()
 
 bk_ggplot_theme()
+
+bk_dark_theme()
 }
 \description{
+Themes
+
 Themes
 
 Themes
